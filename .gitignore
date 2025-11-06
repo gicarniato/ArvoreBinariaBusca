@@ -1,0 +1,17 @@
+# Compilados Java
+*.class
+
+# Diretório de build do Eclipse
+/bin/
+
+# Configurações específicas do Eclipse
+.classpath
+.project
+.settings/
+
+# Arquivos temporários do sistema
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
