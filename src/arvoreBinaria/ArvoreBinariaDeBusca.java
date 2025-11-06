@@ -1,12 +1,10 @@
 package arvoreBinaria;
 
-// Classe que define a estrutura de cada nó da árvore
 class No {
     int valor;
     No esquerda;
     No direita;
     
-    // Construtor
     public No(int valor) {
         this.valor = valor;
         this.esquerda = null;
@@ -14,39 +12,31 @@ class No {
     }
 }
 
-// Classe que implementa a Árvore Binária de Busca
 public class ArvoreBinariaDeBusca {
     No raiz;
     
-    // Construtor
     public ArvoreBinariaDeBusca() {
         this.raiz = null;
     }
     
-    // Método público para inserir um valor na árvore
     public void inserir(int valor) {
         raiz = inserirRecursivo(raiz, valor);
     }
     
-    // Método recursivo privado para inserção
     private No inserirRecursivo(No atual, int valor) {
-        // Se chegou a uma posição nula, cria novo nó
         if (atual == null) {
             return new No(valor);
         }
         
-        // BST CLÁSSICA: menor → esquerda, maior → direita
         if (valor < atual.valor) {
             atual.esquerda = inserirRecursivo(atual.esquerda, valor);
         } else if (valor > atual.valor) {
             atual.direita = inserirRecursivo(atual.direita, valor);
         }
-        // Se valor == atual.valor, NÃO faz nada (ignora duplicatas)
         
         return atual;
     }
     
-    // Método para percurso em ordem (esquerda → raiz → direita)
     public void percursoEmOrdem() {
         percursoEmOrdemRecursivo(raiz);
         System.out.println();
@@ -60,7 +50,6 @@ public class ArvoreBinariaDeBusca {
         }
     }
     
-    // Método para encontrar e exibir as folhas (nós sem filhos)
     public void encontrarFolhas() {
         encontrarFolhasRecursivo(raiz);
         System.out.println();
@@ -68,7 +57,6 @@ public class ArvoreBinariaDeBusca {
     
     private void encontrarFolhasRecursivo(No no) {
         if (no != null) {
-            // Se não tem filhos, é uma folha
             if (no.esquerda == null && no.direita == null) {
                 System.out.print(no.valor + " ");
             }
@@ -77,7 +65,6 @@ public class ArvoreBinariaDeBusca {
         }
     }
     
-    // Método para calcular a altura da árvore
     public int calcularAltura() {
         return calcularAlturaRecursivo(raiz);
     }
@@ -93,7 +80,6 @@ public class ArvoreBinariaDeBusca {
         return Math.max(alturaEsquerda, alturaDireita) + 1;
     }
     
-    // Método para exibir a estrutura da árvore (visual)
     public void mostrarEstrutura() {
         mostrarEstruturaRecursivo(raiz, "", true);
     }
@@ -107,16 +93,13 @@ public class ArvoreBinariaDeBusca {
         }
     }
     
-    // Método para obter a raiz
     public int getRaiz() {
         return raiz != null ? raiz.valor : -1;
     }
     
-    // Método main para execução do programa
     public static void main(String[] args) {
         ArvoreBinariaDeBusca bst = new ArvoreBinariaDeBusca();
         
-        // SEU RA: 2404230 - substitua pelos dígitos do seu RA
         int[] ra = {2, 4, 0, 4, 2, 3, 0};
         
         System.out.println("=== CONSTRUÇÃO DA ÁRVORE BINÁRIA DE BUSCA ===");
